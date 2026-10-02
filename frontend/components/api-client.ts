@@ -1,4 +1,4 @@
-export const API_BASE = process.env.NEXT_PUBLIC_DECISIONOS_API_URL ?? "http://127.0.0.1:8000";
+export const API_BASE = process.env.NEXT_PUBLIC_DECISIONOS_API_URL ?? (process.env.NODE_ENV === "development" ? "http://127.0.0.1:8000" : "");
 
 export async function apiGet<T>(path: string): Promise<T> {
   const response = await fetch(`${API_BASE}/api/${path}`, { cache: "no-store" });
