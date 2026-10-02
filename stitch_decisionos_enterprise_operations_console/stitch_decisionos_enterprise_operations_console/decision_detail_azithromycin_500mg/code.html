@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>DecisionOS - Autonomous Pharma Operations Decision Control System</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"error":"#ffb4ab","on-background":"#dae2fd","on-primary-container":"#003751","secondary-fixed":"#6ffbbe","tertiary-fixed":"#e1e0ff","secondary-container":"#00a572","on-error-container":"#ffdad6","secondary":"#4edea3","surface-bright":"#31394d","surface-container-low":"#131b2e","inverse-on-surface":"#283044","on-error":"#690005","background":"#0b1326","tertiary-fixed-dim":"#c0c1ff","on-secondary-fixed":"#002113","on-primary":"#00344d","on-secondary-fixed-variant":"#005236","on-primary-fixed":"#001e2f","surface-container-lowest":"#060e20","primary-fixed-dim":"#89ceff","surface-container":"#171f33","surface-variant":"#2d3449","outline-variant":"#3e4850","surface-container-highest":"#2d3449","primary-container":"#0ea5e9","tertiary-container":"#8d90ff","on-secondary":"#003824","on-tertiary-container":"#1407ad","tertiary":"#c0c1ff","surface-dim":"#0b1326","surface-container-high":"#222a3d","on-surface":"#dae2fd","surface":"#0b1326","inverse-primary":"#006591","primary-fixed":"#c9e6ff","surface-tint":"#89ceff","inverse-surface":"#dae2fd","secondary-fixed-dim":"#4edea3","on-surface-variant":"#bec8d2","primary":"#89ceff","on-tertiary-fixed":"#07006c","outline":"#88929b","on-tertiary":"#1000a9","on-primary-fixed-variant":"#004c6e","error-container":"#93000a","on-secondary-container":"#00311f","on-tertiary-fixed-variant":"#2f2ebe"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-md":"0.5rem","margin":"1rem","gutter-mobile":"0.5rem","margin-mobile":"0.75rem","space-xl":"1rem","space-sm":"0.25rem","space-xs":"0.125rem","gutter":"0.75rem","space-lg":"0.75rem"},"fontFamily":{"label-uppercase":["JetBrains Mono"],"body-sm":["Inter"],"code-metric-sm":["JetBrains Mono"],"body-md":["Inter"],"code-metric-lg":["JetBrains Mono"],"code-metric-md":["JetBrains Mono"],"headline-md":["Inter"],"headline-lg":["Inter"],"headline-xl":["Inter"]},"fontSize":{"label-uppercase":["10px",{"lineHeight":"12px","letterSpacing":"0.08em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.005em","fontWeight":"400"}],"code-metric-sm":["11px",{"lineHeight":"14px","letterSpacing":"0em","fontWeight":"400"}],"body-md":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"code-metric-lg":["20px",{"lineHeight":"24px","letterSpacing":"-0.02em","fontWeight":"500"}],"code-metric-md":["13px",{"lineHeight":"16px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-md":["15px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg":["18px",{"lineHeight":"24px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-xl":["24px",{"lineHeight":"32px","letterSpacing":"-0.02em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant"><div class="h-14 w-full px-gutter flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-md"><span class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">DecisionOS</span><span class="font-label-uppercase text-label-uppercase px-space-sm py-space-xs rounded bg-surface-container-high text-primary border border-outline-variant uppercase">AUTONOMOUS OPERATIONAL ENGINE</span></div><nav class="flex items-center gap-space-xs ml-space-md" data-active-classes="bg-surface-container-high text-primary border-primary"><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface rounded transition-colors border border-transparent" data-path="overview" href="#">Overview</a><a aria-current="page" class="px-space-md py-space-xs font-body-sm rounded transition-colors bg-surface-container-high text-primary border-primary" data-path="decisions" href="#">Decisions</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface rounded transition-colors border border-transparent" data-path="inventory" href="#">Inventory</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface rounded transition-colors border border-transparent" data-path="procurement" href="#">Procurement</a><a class="px-space-md py-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface rounded transition-colors border border-transparent" data-path="evidence" href="#">Evidence</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-low rounded border border-outline-variant"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-code-metric-sm text-code-metric-sm text-secondary font-medium">Operational</span></div><div class="font-code-metric-sm text-code-metric-sm"><span class="text-outline">Last Analysis:</span> <span class="text-on-surface font-medium">2 min ago</span></div><div class="font-code-metric-sm text-code-metric-sm"><span class="text-outline">Active Sources:</span> <span class="text-primary font-medium">5/5</span></div></div><button class="px-space-md py-space-xs bg-primary-container text-on-primary-container font-label-uppercase text-label-uppercase rounded hover:bg-primary hover:text-on-primary transition-colors border border-primary flex items-center gap-space-xs" type="button"><span class="material-symbols-outlined text-[14px]">play_arrow</span><span>[ Run Analysis ]</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="h-7 w-full px-gutter bg-surface-container-low border-t border-outline-variant/60 flex items-center justify-between"><div class="flex items-center gap-space-md font-label-uppercase text-label-uppercase text-on-surface-variant"><span class="text-outline font-code-metric-sm">PIPELINE:</span><span class="text-on-surface font-semibold">Continuous Pharma Supply-Chain Decision Engine:</span><span class="text-primary tracking-wider">ANALYZE → SIMULATE → DECIDE → VERIFY</span></div><div class="hidden md:flex items-center gap-space-lg font-code-metric-sm text-code-metric-sm text-outline"><span>INTEGRITY CHECK: <strong class="text-secondary">PASSED</strong></span><span>ENCLAVE: <strong class="text-on-surface">SGX-V2-ORD</strong></span></div></div></header><main class="w-full pt-[85px] bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full px-gutter py-space-lg flex flex-col gap-space-lg">
+<!-- CONTEXT & STATUS BAR -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<span class="font-code-metric-sm text-code-metric-sm text-outline">ENGINE: <strong class="text-on-surface">AUTONOMOUS_V4</strong></span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">PIPELINE: <strong class="text-secondary font-medium">VERIFIED &amp; READY FOR DISPATCH</strong></span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">CYCLE LATENCY: <strong class="text-primary font-medium">182ms</strong></span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="font-code-metric-sm text-code-metric-sm text-outline">HASH: <span class="font-mono text-on-surface-variant">0x7f48...d91c</span></span>
+<span class="font-code-metric-sm text-code-metric-sm px-space-sm py-space-xs rounded bg-surface-container-highest text-primary">TIMESTAMP: 14 mins ago</span>
+</div>
+</div>
+<!-- MAIN HEADER MODULE -->
+<div class="bg-surface-container rounded-lg p-space-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex items-center gap-space-sm font-label-uppercase text-label-uppercase text-outline">
+<a class="hover:text-primary transition-colors" href="#">DECISIONS</a>
+<span>/</span>
+<span class="text-primary">DEC-2025-0842</span>
+<span>/</span>
+<span class="text-on-surface-variant">HYD-CENTRAL-NODE</span>
+</div>
+<div class="flex items-center gap-space-md flex-wrap mt-space-xs">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">
+            Azithromycin 500mg — Hyderabad Central
+          </h1>
+<div class="px-space-md py-space-xs rounded bg-secondary-container/20 text-secondary font-label-uppercase text-label-uppercase flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>VERIFIED &amp; CERTIFIED</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Expiry Exposure Mitigation &amp; Outbreak Demand Alignment across Telangana Feeder Grid
+        </p>
+</div>
+<!-- Quick Operational Action Cluster -->
+<div class="flex items-center gap-space-md self-start lg:self-center shrink-0">
+<button class="px-space-md py-space-xs bg-surface-container-high hover:bg-surface-bright text-on-surface rounded font-body-sm text-body-sm transition-colors flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Export Dossier</span>
+</button>
+<button class="px-space-md py-space-xs bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary rounded font-label-uppercase text-label-uppercase transition-all flex items-center gap-space-xs shadow-md" type="button">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>EXECUTE DISPATCH (1,800 U)</span>
+</button>
+</div>
+</div>
+<!-- 1. WHY THIS DECISION WAS DETECTED (7 Evidence Data Tiles) -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">sensors</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">1. WHY THIS DECISION WAS DETECTED — EVIDENCE SIGNALS GRID</span>
+</div>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">CONFIDENCE AGGREGATE: 99.41%</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-space-md">
+<!-- Tile 1 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>DEMAND ACCELERATION</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">trending_up</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-secondary font-semibold">+18.4%</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">7-day moving avg velocity spike</div>
+</div>
+<!-- Tile 2 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>DISEASE PRESSURE</span>
+<span class="material-symbols-outlined text-error text-[16px]">coronavirus</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-error font-semibold">HIGH</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">ILI in Malkajgiri &amp; Ranga Reddy</div>
+</div>
+<!-- Tile 3 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>SEASONALITY FACTOR</span>
+<span class="material-symbols-outlined text-primary text-[16px]">cyclone</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-primary font-semibold">1.24×</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Monsoon transition model weight</div>
+</div>
+<!-- Tile 4 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>DEPOT INVENTORY</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">warehouse</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-on-surface font-semibold">12,400 <span class="text-[12px] text-outline">U</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Total on-hand across Central hub</div>
+</div>
+<!-- Tile 5 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>EXPIRY EXPOSURE</span>
+<span class="material-symbols-outlined text-error text-[16px]">hourglass_bottom</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-error font-semibold">3,100 <span class="text-[12px] text-outline">U</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Batch AZ-9021 | 42d (₹4.82L risk)</div>
+</div>
+<!-- Tile 6 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>SUPPLIER LEAD TIME</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">schedule</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-on-surface font-semibold">9 <span class="text-[12px] text-outline">DAYS</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Standard primary reorder cycle</div>
+</div>
+<!-- Tile 7 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>WEATHER SIGNAL</span>
+<span class="material-symbols-outlined text-primary text-[16px]">rainy</span>
+</div>
+<div class="font-code-metric-lg text-code-metric-lg text-primary font-semibold">+64mm</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Unseasonal surge via Open-Meteo</div>
+</div>
+</div>
+</div>
+<!-- 2. ANALYSIS DOSSIER & REGIONAL MAP CONTEXT -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Technical Breakdown (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container rounded-lg p-space-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-md mb-space-md border-b border-surface-container-highest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">biotech</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">2. ANALYSIS — AI INVESTIGATION BREAKDOWN</span>
+</div>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">DOSSIER #HYD-9021-X</span>
+</div>
+<div class="space-y-space-md">
+<div>
+<div class="font-label-uppercase text-label-uppercase text-primary mb-space-xs flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">help_center</span>
+<span>WHAT IS HAPPENING?</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface bg-surface-container-low p-space-md rounded">
+<strong>3,100 units of Azithromycin 500mg</strong> will expire within <strong>42 days</strong> at Hyderabad Central if run-rate remains restricted to local demand velocity. Simultaneously, satellite feeder depots (Warangal and Nizamabad) project a combined <strong>1,400 unit stockout deficit within 8 days</strong> triggered by unseasonal ILI outbreaks.
+              </p>
+</div>
+<div>
+<div class="font-label-uppercase text-label-uppercase text-error mb-space-xs flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+<span>WHY DOES IT MATTER?</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface bg-surface-container-low p-space-md rounded">
+                Immediate <strong>₹4.82L write-off capital loss</strong> on expired active pharmaceutical ingredient inventory, coupled with imminent treatment shortages in tier-2 community clinics during peak transmission days.
+              </p>
+</div>
+<div>
+<div class="font-label-uppercase text-label-uppercase text-secondary mb-space-xs flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">rule</span>
+<span>KEY OPERATIONAL CONSTRAINTS</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm text-on-surface">
+<div class="bg-surface-container-low p-space-sm rounded">
+<div class="font-label-uppercase text-label-uppercase text-outline">COLD-CHAIN</div>
+<div class="font-body-sm text-body-sm font-medium mt-space-xs">Strict 15°C – 25°C transit envelope</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<div class="font-label-uppercase text-label-uppercase text-outline">TRANSIT WINDOW</div>
+<div class="font-body-sm text-body-sm font-medium mt-space-xs">&lt;18 hrs point-to-point transit</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<div class="font-label-uppercase text-label-uppercase text-outline">REGULATORY</div>
+<div class="font-body-sm text-body-sm font-medium mt-space-xs">Schedule H1 batch barcoding GxP</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-metric-sm text-code-metric-sm">
+<span>SOURCE: Stochastic Multi-Echelon Replenishment Algorithm</span>
+<span>LATENCY: 44ms</span>
+</div>
+</div>
+<!-- Geospatial Telemetry View (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container rounded-lg p-space-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-md mb-space-md border-b border-surface-container-highest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">alt_route</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">INTER-DEPOT REDISTRIBUTION VECTOR</span>
+</div>
+<span class="font-code-metric-sm text-code-metric-sm text-secondary">ACTIVE ROUTE</span>
+</div>
+<!-- Stylized Tactical Vector Visualizer -->
+<div class="relative w-full h-48 bg-surface-container-lowest rounded-lg p-space-md overflow-hidden flex items-center justify-center">
+<!-- Background map grid effect -->
+<div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(#89ceff 1px, transparent 1px); background-size: 16px 16px;"></div>
+<svg class="w-full h-full relative z-10" fill="none" viewbox="0 0 360 160">
+<!-- Route Lines -->
+<path class="animate-pulse" d="M 90 80 Q 180 30 270 45" stroke="#4edea3" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 90 80 Q 180 120 280 115" stroke="#4edea3" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Hubs -->
+<circle cx="90" cy="80" fill="#0ea5e9" r="8"></circle>
+<circle cx="90" cy="80" r="14" stroke="#0ea5e9" stroke-opacity="0.4" stroke-width="1.5"></circle>
+<text class="font-label-uppercase text-[10px] font-semibold" fill="#dae2fd" x="50" y="110">HYDERABAD (CENTRAL)</text>
+<text class="font-code-metric-sm text-[9px]" fill="#88929b" x="65" y="122">-1,800 units</text>
+<!-- Node Warangal -->
+<circle cx="270" cy="45" fill="#4edea3" r="6"></circle>
+<text class="font-label-uppercase text-[10px] font-semibold" fill="#dae2fd" x="250" y="30">WARANGAL</text>
+<text class="font-code-metric-sm text-[9px]" fill="#4edea3" x="250" y="70">+1,000 units</text>
+<!-- Node Nizamabad -->
+<circle cx="280" cy="115" fill="#4edea3" r="6"></circle>
+<text class="font-label-uppercase text-[10px] font-semibold" fill="#dae2fd" x="250" y="138">NIZAMABAD</text>
+<text class="font-code-metric-sm text-[9px]" fill="#4edea3" x="250" y="150">+800 units</text>
+</svg>
+</div>
+<div class="mt-space-md grid grid-cols-2 gap-space-md font-body-sm text-body-sm">
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="text-outline font-label-uppercase text-label-uppercase block">REEFER FLEET LINK</span>
+<span class="text-on-surface font-code-metric-sm text-code-metric-sm mt-space-xs block">BlueDart Cold Express (TS-09-UB-4112)</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="text-outline font-label-uppercase text-label-uppercase block">TRANSIT ESTIMATE</span>
+<span class="text-secondary font-code-metric-sm text-code-metric-sm mt-space-xs block">5.4h (Warangal) | 6.2h (Nizamabad)</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-outline font-code-metric-sm text-code-metric-sm border-t border-surface-container-highest">
+<span>DYNAMIC ROUTING OPTIMIZER</span>
+<span class="text-secondary">TEMP: 19.8°C OK</span>
+</div>
+</div>
+</div>
+<!-- 3. SIMULATION (Candidate Action Comparison Matrix) -->
+<div class="bg-surface-container rounded-lg p-space-xl flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container-highest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">table_chart</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">3. SIMULATION — CANDIDATE ACTION COMPARISON MATRIX</span>
+</div>
+<div class="font-code-metric-sm text-code-metric-sm text-outline">
+          OPTIMIZATION TARGET: <span class="text-secondary font-semibold">MAX EXPOSURE REDUCTION / MIN TOTAL COST</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-lowest text-outline font-label-uppercase text-label-uppercase h-9">
+<th class="px-space-md">CANDIDATE ACTION</th>
+<th class="px-space-md text-right">EXPIRY LOSS</th>
+<th class="px-space-md text-right">STOCKOUT RISK</th>
+<th class="px-space-md text-right">EXECUTION COST</th>
+<th class="px-space-md">EXPECTED OPERATIONAL IMPACT</th>
+<th class="px-space-md text-center">ACTION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest">
+<!-- Row 1 -->
+<tr class="h-12 hover:bg-surface-container-high/50 transition-colors">
+<td class="px-space-md font-medium text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span>Do Nothing (Baseline)</span>
+</div>
+</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-error">₹4.82L</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-error">18.2%</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-on-surface">₹0</td>
+<td class="px-space-md text-on-surface-variant">Complete batch write-off; regional deficit in 2 satellite districts.</td>
+<td class="px-space-md text-center">
+<span class="font-label-uppercase text-label-uppercase text-outline">REJECTED</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="h-12 hover:bg-surface-container-high/50 transition-colors">
+<td class="px-space-md font-medium text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span>Prioritize FEFO Locally</span>
+</div>
+</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-outline">₹2.10L</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-outline">14.5%</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-on-surface">₹12,000</td>
+<td class="px-space-md text-on-surface-variant">Partial loss avoided; local capacity saturation leaves feeders at deficit.</td>
+<td class="px-space-md text-center">
+<span class="font-label-uppercase text-label-uppercase text-outline">SUB-OPTIMAL</span>
+</td>
+</tr>
+<!-- Row 3: RECOMMENDED (Highlighted) -->
+<tr class="h-14 bg-primary-container/15 hover:bg-primary-container/25 transition-colors font-medium">
+<td class="px-space-md text-primary font-semibold">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span>Redistribute 1,800 units to Warangal &amp; Nizamabad</span>
+<span class="px-space-sm py-space-xs bg-primary text-on-primary font-label-uppercase text-label-uppercase rounded text-[9px] font-bold">RECOMMENDED</span>
+</div>
+</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-secondary font-bold">₹0.35L</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-secondary font-bold">2.1%</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-on-surface">₹28,400</td>
+<td class="px-space-md text-on-surface">
+<strong class="text-secondary font-semibold">₹4.47L capital saved</strong>; feeder stockout risk drops 4.2% → 2.1%. Outbreak stabilized.
+              </td>
+<td class="px-space-md text-center">
+<button class="px-space-md py-space-xs bg-primary text-on-primary font-label-uppercase text-label-uppercase rounded hover:bg-primary-fixed transition-colors" type="button">
+                  SELECT
+                </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="h-12 hover:bg-surface-container-high/50 transition-colors">
+<td class="px-space-md font-medium text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span>Reorder Emergency Stock</span>
+</div>
+</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-error">₹4.82L</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-secondary">1.2%</td>
+<td class="px-space-md text-right font-code-metric-md text-code-metric-md text-error">₹1,85,000</td>
+<td class="px-space-md text-on-surface-variant">Wasteful duplicate inventory creation while expiring units remain write-off.</td>
+<td class="px-space-md text-center">
+<span class="font-label-uppercase text-label-uppercase text-outline">INEFFICIENT</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 4. INDEPENDENT VERIFICATION (Mission-Critical Trust Section) -->
+<div class="bg-surface-container rounded-lg p-space-xl flex flex-col gap-space-lg relative overflow-hidden">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container-highest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified_user</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">4. INDEPENDENT VERIFICATION &amp; MATHEMATICAL AUDIT ENCLAVE</span>
+</div>
+<div class="px-space-md py-space-xs rounded bg-secondary-container/20 text-secondary font-label-uppercase text-label-uppercase flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>INTEGRITY STATUS: 100% BIT-PERFECT MATCH</span>
+</div>
+</div>
+<!-- Core Dual-Box Comparison Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Left Panel: AI Generation Calculation -->
+<div class="bg-surface-container-low rounded-lg p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline pb-space-sm border-b border-surface-container-highest">
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[15px]">psychology</span>
+<span>PRIMARY AI PREDICTIVE RUN</span>
+</span>
+<span class="text-primary font-mono">MODEL: STOCHASTIC-V4.2</span>
+</div>
+<div class="mt-space-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Calculated Gross Financial Benefit</span>
+<div class="font-code-metric-lg text-code-metric-lg text-primary font-bold mt-space-xs">₹8,21,000</div>
+<div class="mt-space-md space-y-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex justify-between"><span>Methodology:</span> <span class="text-on-surface font-mono">Dynamic Echelon Stochastic Projection</span></div>
+<div class="flex justify-between"><span>Iterations Evaluated:</span> <span class="text-on-surface font-mono">10,000 Monte Carlo runs</span></div>
+<div class="flex justify-between"><span>Confidence Bound:</span> <span class="text-secondary font-mono">99.2% CI [₹8.14L – ₹8.28L]</span></div>
+</div>
+</div>
+</div>
+<div class="mt-space-lg pt-space-xs border-t border-surface-container-highest font-code-metric-sm text-code-metric-sm text-outline flex items-center justify-between">
+<span>INFERENCE HASH: 0x4e29...910a</span>
+<span class="text-primary">EXEC TIME: 112ms</span>
+</div>
+</div>
+<!-- Right Panel: Independent Verification Engine -->
+<div class="bg-surface-container-low rounded-lg p-space-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline pb-space-sm border-b border-surface-container-highest">
+<span class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[15px]">fact_check</span>
+<span>INDEPENDENT VERIFICATION ENGINE</span>
+</span>
+<span class="text-secondary font-mono">ISOLATED ENCLAVE (SGX-V2)</span>
+</div>
+<div class="mt-space-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Independent Recomputed Benefit</span>
+<div class="font-code-metric-lg text-code-metric-lg text-secondary font-bold mt-space-xs">₹8,21,000</div>
+<div class="mt-space-md space-y-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex justify-between"><span>Audit Method:</span> <span class="text-on-surface font-mono">Deterministic Unit-Ledger Ledger Audit</span></div>
+<div class="flex justify-between"><span>Data Feed:</span> <span class="text-on-surface font-mono">Raw ERP SAP Ingestion (Zero LLM / Zero GenAI)</span></div>
+<div class="flex justify-between"><span>Variance Delta:</span> <span class="text-secondary font-mono">₹0.00 (0.0000% dev)</span></div>
+</div>
+</div>
+</div>
+<div class="mt-space-lg pt-space-xs border-t border-surface-container-highest font-code-metric-sm text-code-metric-sm text-outline flex items-center justify-between">
+<span>VERIFIER ENCLAVE: HASH-OK</span>
+<span class="text-secondary">STATUS: PASS ✓</span>
+</div>
+</div>
+</div>
+<!-- Trust Subtext Banner -->
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex items-center gap-space-md">
+<span class="material-symbols-outlined text-secondary text-[24px] shrink-0">check_circle</span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-medium text-on-surface">Critical numerical claims were independently recomputed from the underlying raw inputs without generative bias.</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">GxP 21 CFR Part 11 Cryptographically Sealed Signature ID: <code class="text-primary font-mono">SIG-9082-AZI-HYD-VALIDATED</code></span>
+</div>
+</div>
+<!-- Secondary Tripwire Fail-Safe Demonstration Widget -->
+<div class="bg-error-container/20 rounded-lg p-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error text-[22px]">shield</span>
+</div>
+<div>
+<div class="font-label-uppercase text-label-uppercase text-error font-semibold flex items-center gap-space-xs">
+<span>[SIMULATED SAFETY TRIPWIRE PROTOCOL]</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-error-container mt-space-xs">
+              Demonstration: If AI claims <span class="font-mono font-bold">₹9.12L</span> but deterministic verification yields <span class="font-mono font-bold">₹8.46L</span> (&gt;0.5% delta tolerance), dispatch is automatically killed.
+            </p>
+</div>
+</div>
+<div class="px-space-md py-space-xs rounded bg-error/15 text-error font-label-uppercase text-label-uppercase shrink-0 font-bold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">block</span>
+<span>MISMATCH: RECOMMENDATION WITHHELD - BARRED FROM DISPATCH</span>
+</div>
+</div>
+</div>
+<!-- 5. EVIDENCE REPOSITORY (Traceable Source Records) -->
+<div class="bg-surface-container rounded-lg p-space-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">folder_supervised</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">5. EVIDENCE REPOSITORY — IMMUTABLE DATA LINEAGE</span>
+</div>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">AUDIT BLOCK: #892,109</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Record 1 -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>ERP INVENTORY LEDGER</span>
+<span class="material-symbols-outlined text-primary text-[16px]">database</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">SAP S/4HANA</div>
+<div class="font-code-metric-sm text-code-metric-sm text-on-surface-variant mt-space-xs">
+              Batch AZ-9021 | Qty: 3,100<br/>Expiry: 2025-06-30
+            </div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container-highest flex items-center justify-between font-code-metric-sm text-code-metric-sm text-outline">
+<span>2025-05-18 10:14:02</span>
+<span class="text-secondary">SYNCED</span>
+</div>
+</div>
+<!-- Record 2 -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>DISEASE SURVEILLANCE</span>
+<span class="material-symbols-outlined text-error text-[16px]">public</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">IDSP / WHO Hub</div>
+<div class="font-code-metric-sm text-code-metric-sm text-on-surface-variant mt-space-xs">
+              ILI Test Positivity: 28.4%<br/>Cluster Alert: Medchal
+            </div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container-highest flex items-center justify-between font-code-metric-sm text-code-metric-sm text-outline">
+<span>2025-05-18 09:30:15</span>
+<span class="text-secondary">SYNCED</span>
+</div>
+</div>
+<!-- Record 3 -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>WEATHER TELEMETRY</span>
+<span class="material-symbols-outlined text-primary text-[16px]">cloud_sync</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">Open-Meteo API</div>
+<div class="font-code-metric-sm text-code-metric-sm text-on-surface-variant mt-space-xs">
+              88% Humidity Level<br/>Precipitation Alert (+64mm)
+            </div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container-highest flex items-center justify-between font-code-metric-sm text-code-metric-sm text-outline">
+<span>2025-05-18 10:00:00</span>
+<span class="text-secondary">SYNCED</span>
+</div>
+</div>
+<!-- Record 4 -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-uppercase text-label-uppercase text-outline mb-space-xs">
+<span>DEPOT FLEET CAPACITY</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">local_shipping</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">BlueDart Cold Chain</div>
+<div class="font-code-metric-sm text-code-metric-sm text-on-surface-variant mt-space-xs">
+              Reefer Vehicle Available<br/>Ready for Loading: Bay 4
+            </div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container-highest flex items-center justify-between font-code-metric-sm text-code-metric-sm text-outline">
+<span>2025-05-18 08:45:00</span>
+<span class="text-secondary">CONFIRMED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. AUDIT TRAIL (Horizontal Stepper) -->
+<div class="bg-surface-container rounded-lg p-space-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">linear_scale</span>
+<span class="font-label-uppercase text-label-uppercase text-on-surface tracking-wider font-semibold">6. AUDIT TRAIL — EXECUTION PIPELINE TIMELINE</span>
+</div>
+<span class="font-code-metric-sm text-code-metric-sm text-secondary flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>CHAIN SEALED</span>
+</span>
+</div>
+<!-- Stepper Track -->
+<div class="grid grid-cols-2 md:grid-cols-6 gap-space-md pt-space-sm">
+<!-- Step 1 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-[11px]">✓</span>
+<span class="h-0.5 flex-1 bg-secondary hidden md:block"></span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-on-surface mt-space-xs font-semibold">1. DATA ANALYZED</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">10:42:10 UTC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">5 streams ingested</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-[11px]">✓</span>
+<span class="h-0.5 flex-1 bg-secondary hidden md:block"></span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-on-surface mt-space-xs font-semibold">2. RISK DETECTED</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">10:45:04 UTC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Expiry threshold hit</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-[11px]">✓</span>
+<span class="h-0.5 flex-1 bg-secondary hidden md:block"></span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-on-surface mt-space-xs font-semibold">3. ANALYSIS COMPLETED</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">10:47:19 UTC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Impact matrix synthesized</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-[11px]">✓</span>
+<span class="h-0.5 flex-1 bg-secondary hidden md:block"></span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-on-surface mt-space-xs font-semibold">4. ACTIONS SIMULATED</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">10:48:02 UTC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">4 options evaluated</span>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-[11px]">✓</span>
+<span class="h-0.5 flex-1 bg-secondary hidden md:block"></span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-on-surface mt-space-xs font-semibold">5. DECISION GENERATED</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">10:48:44 UTC</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Action #3 chosen</span>
+</div>
+<!-- Step 6 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-[11px]">✓</span>
+</div>
+<span class="font-label-uppercase text-label-uppercase text-secondary mt-space-xs font-semibold">6. VERIFIED</span>
+<span class="font-code-metric-sm text-code-metric-sm text-outline">10:49:01 UTC</span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">Ready for execution</span>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant py-space-md"><div class="w-full px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md font-code-metric-sm text-code-metric-sm text-on-surface-variant"><div>DecisionOS Pharma Autonomy Core v4.18.2 | GxP 21 CFR Part 11 Validated</div><div class="flex items-center gap-space-lg"><span>TELEMETRY SYNC: 100Hz</span><span>AUDIT LOG: CRYPTO-HASH-SEALED</span><span>© 2024 DecisionOS BioLogics</span></div></div></footer></body></html>
